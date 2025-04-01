@@ -399,7 +399,7 @@ let levelDesigner;
 const keys = {
     a: false,
     s: false,
-    control: false,
+    w: false,
     enter: false,
     space: false
 };
@@ -550,7 +550,7 @@ function handleKeyDown(event) {
     switch(event.key.toLowerCase()) {
         case 'a': keys.a = true; break;
         case 's': keys.s = true; break;
-        case 'control': case 'ctrl': keys.control = true; break;  // Beide Varianten unterstützen
+        case 'w': keys.w = true; break;
         case 'enter': keys.enter = true; break;
         case ' ': keys.space = true; break;
     }
@@ -560,7 +560,7 @@ function handleKeyUp(event) {
     switch(event.key.toLowerCase()) {
         case 'a': keys.a = false; break;
         case 's': keys.s = false; break;
-        case 'control': case 'ctrl': keys.control = false; break;  // Beide Varianten unterstützen
+        case 'w': keys.w = false; break;
         case 'enter': keys.enter = false; break;
         case ' ': keys.space = false; break;
     }
@@ -574,7 +574,7 @@ function animate() {
     if (!gameState.isGameOver) {
         if (keys.a) spaceship.rotateLeft();
         if (keys.s) spaceship.rotateRight();
-        spaceship.thrust = keys.control;
+        spaceship.thrust = keys.w;
         
         if (keys.space) {
             spaceship.activateShield();
