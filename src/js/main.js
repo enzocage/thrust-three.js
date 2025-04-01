@@ -2,11 +2,11 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.139.0/build/three.m
 
 // Konstanten
 const GRAVITY = 0.005;
-const THRUST_POWER = 0.01;
+const THRUST_POWER = 0.03;
 const ROTATION_SPEED = 0.05;
 const FRICTION = 0.99;
 const FUEL_CONSUMPTION = 0.2;
-const INITIAL_LIVES = 3;
+const INITIAL_LIVES = 13;
 const INITIAL_FUEL = 100;
 
 // Spielzustand
@@ -398,7 +398,7 @@ let levelDesigner;
 // Steuerungszustand
 const keys = {
     a: false,
-    s: false,
+    d: false,
     w: false,
     enter: false,
     space: false
@@ -549,7 +549,7 @@ function checkCollision(obj1, obj2) {
 function handleKeyDown(event) {
     switch(event.key.toLowerCase()) {
         case 'a': keys.a = true; break;
-        case 's': keys.s = true; break;
+        case 'd': keys.d = true; break;
         case 'w': keys.w = true; break;
         case 'enter': keys.enter = true; break;
         case ' ': keys.space = true; break;
@@ -559,7 +559,7 @@ function handleKeyDown(event) {
 function handleKeyUp(event) {
     switch(event.key.toLowerCase()) {
         case 'a': keys.a = false; break;
-        case 's': keys.s = false; break;
+        case 'd': keys.d = false; break;
         case 'w': keys.w = false; break;
         case 'enter': keys.enter = false; break;
         case ' ': keys.space = false; break;
@@ -573,7 +573,7 @@ function animate() {
     // Steuerung
     if (!gameState.isGameOver) {
         if (keys.a) spaceship.rotateLeft();
-        if (keys.s) spaceship.rotateRight();
+        if (keys.d) spaceship.rotateRight();
         spaceship.thrust = keys.w;
         
         if (keys.space) {
